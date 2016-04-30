@@ -36,7 +36,8 @@ class CategoryController extends Controller {
 	 * @return \Illuminate\Http\Response
 	 */
 	public function index() {
-
+		$category = $this->c->orderBy ( 'cat_id', 'desc' )->paginate ( $this->limite );;
+		return view('admin/category', compact('category'));
 	}
 	
 	/**
@@ -54,8 +55,11 @@ class CategoryController extends Controller {
 	 * @param \Illuminate\Http\Request $request        	
 	 * @return \Illuminate\Http\Response
 	 */
-	public function store(CategoryRequest $request) {
-
+	public function store(Request $request) {
+			$this->c->cat_name=$request->cat_name;
+			$this->c->save();
+		\Session::flash('message','Add category success!!');
+		return redirect('category');
 	}
 	
 	/**
@@ -65,7 +69,15 @@ class CategoryController extends Controller {
 	 * @return \Illuminate\Http\Response
 	 */
 	public function show($id) {
-
+			// List data by id Than Ravy
+			$my_id=preg_replace('#[^0-9]#','',$id);
+		if(!empty($my_id)){
+			$category=$this->c->where('cat_id',$id)->first();
+			return view('admin.viewcategory',compact('category'));
+		}
+		else{
+			return redirect('category');
+		}
 	}
 	
 	/**
@@ -75,7 +87,15 @@ class CategoryController extends Controller {
 	 * @return \Illuminate\Http\Response
 	 */
 	public function edit($id) {
-
+		//Edit category by Than Ravy
+			$my_id=preg_replace('#[^0-9]#','',$id);
+			if(!empty($my_id)){
+				$category=$this->c->where('cat_id',$id)->first();
+				return view('admin.editcategory',compact('category'));
+			}
+		else{
+			return redirect('category');
+		}
 	}
 	
 	/**
@@ -85,8 +105,18 @@ class CategoryController extends Controller {
 	 * @param int $id        	
 	 * @return \Illuminate\Http\Response
 	 */
-	public function update(CategoryRequest $request) {
+	public function update(Request $request) {
+			// Update product by Than Ravy
 
+		$my_id=preg_replace('#[^0-9]#','',$request->get('id'));
+		if(!empty($my_id)){
+			$this->c->where('cat_id',$my_id)->update([
+				'cat_name'=>$request->get('cat_name')
+			]);
+			\Session::flash ('message', 'Update Successful');
+			return redirect ('category');
+		}
+		$this->edit ();
 	}
 	
 	/**
@@ -96,7 +126,15 @@ class CategoryController extends Controller {
 	 * @return \Illuminate\Http\Response
 	 */
 	public function destroy($id) {
-
+			$my_id=preg_replace('#[^0-9]#','',$id);
+		if(!empty($my_id)){
+			$this->c->where('cat_id',$my_id)->delete();
+			\Session::flash('messageDelete','Delete success');
+			return redirect('category');
+		}
+		else{
+			return redirect('category');
+		}
 	}
 	
 	/**
@@ -105,6 +143,8 @@ class CategoryController extends Controller {
 	 * @param SearchRequest $request        	
 	 */
 	public function search(SearchRequest $request) {
-
+			$key=$request->get('key');
+			$category=$this->c->where('cat_name','like','%'.$key.'%')->paginate($this->limite);
+			return view('admin.category',compact('category','key'));
 	}
 }

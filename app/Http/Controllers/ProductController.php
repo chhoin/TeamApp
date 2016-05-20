@@ -18,7 +18,7 @@ use App\Http\Requests\SearchRequest;
 class ProductController extends Controller
 {
 	
-	private $limite = 2;
+	private $limite = 3;
 	
 	private $p;
 	

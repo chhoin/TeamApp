@@ -91,9 +91,10 @@
                                         <tr class="success">
                                             <th width="10%">ID</th>
                                             <th width="20%">Name</th>
-                                            <th width="20%">Created</th>
+                                            <th width="15%">Created</th>
                                             <th width="10%">created</th>
                                             <th width="20%">Activity</th>
+                                            <th width="25%">Share</th>
                                         </tr>
                                         </thead>
                                         <tbody>
@@ -109,6 +110,7 @@
                                                     <a href="{{ URL::to('/category')."/edit/".$cat->cat_id }}" class="btn btn-primary btn-ms">Edit</a> &nbsp;
                                                     <a href="{{ URL::to('/category')."/delete/".$cat->cat_id }}" class="btn btn-danger btn-ms">Delete</a>
                                                 </td>
+                                                <td> <div class="addthis_sharing_toolbox"></div></td>
                                             </tr>
                                     @endforeach
 

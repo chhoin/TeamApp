@@ -34,7 +34,8 @@
                                 <h3>Name: {{ $category->cat_name }}</h3>
                                 <p>Created: {!! $category->created_at !!}</p>
                                 <p>Updated: {!! $category->updated_at !!}</p>
-
+                                <p>Share to socail</p>
+                                <div class="addthis_sharing_toolbox"></div>
                             </div>
                         </div>
                     </div>

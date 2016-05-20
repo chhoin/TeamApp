@@ -34,15 +34,13 @@
                                 <h3>Name: {{ $product->pro_name}}</h3>
                                 <p>{!! $product->pro_prize !!}</p>
                                 <p>{!! $product->pro_description !!}</p>
+                                <p>Share to socail</p>
+                                <div class="addthis_sharing_toolbox"></div>
 
                             </div>
                         </div>
                     </div>
                 </div>
-
-
-
-
             </div>
 
 

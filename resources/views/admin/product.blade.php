@@ -6,7 +6,7 @@
 
 
 @section('body')
-	
+
 	<div class='container-fluid'>
 				<div class='row'>
 					<div class="col-xs-12 col-sm-2 col-md-2 col-lg-2" >
@@ -19,14 +19,14 @@
 								         <li><a href="{{ URL::to('/product') }}">Product</a></li>
 								        <li><a href="#">Log Out</a></li>
 								    </ul>
-						  		</div> 
-						   
+						  		</div>
+
 							</div>
 					</div>
 				<div class="col-xs-12 col-sm-10 col-md-10 col-lg-10">
 						<div id="demo" >
 						<div class='row' >
-							
+
 							<div class="panel panel-primary">
 							  	<div class="panel-heading ">Form</div>
 							  	<div class="panel-body">
@@ -65,20 +65,20 @@
 													<div class="col-sm-5">
 														<input type="submit" value="Save"  class="btn btn-success">
 														<button id="clear" onclick="myClear()" class="btn btn-success">Clear</button>
-														
+
 													</div>
 												</div>
 											</div>
 										</form>
-							  		</div>  
+							  		</div>
 							</div>
 						</div>
-						</div> 
+						</div>
 						<!-- inser and search-->
 						<div class="row" >
 							<div class="col-xs-12 col-sm-2 col-md-2 col-lg-2">
 								<button type="button" class="btn btn-info" data-toggle="collapse" data-target="#demo">Insert Form</button>
-								
+
 							</div>
 							<div class="col-xs-12 col-sm-10 col-md-10 col-lg-10">
 								<form method="get" action="{{ URL::to('/product')."/search" }}" accept-charset="UTF-8">
@@ -105,14 +105,16 @@
 								<div class="panel-body">
 									<p style="color: red;" class="text-center"><?php echo Session::get('messageDelete');  ?></p>
 									<p style="color: darkblue" class="text-center"><?php echo Session::get('message');  ?></p>
+									<div class="form-group">
 									<table class="table table-condensed">
 										<thead>
 										  <tr class="success">
 											<th width="10%">ID</th>
 											<th width="20%">Name</th>
-											<th width="20%">Prize</th>
+											<th width="15%">Prize</th>
 											<th width="10%">created</th>
 											<th width="20%">Activity</th>
+											<th width="25%">Share</th>
 										  </tr>
 										</thead>
 										<tbody>
@@ -128,33 +130,35 @@
 														   <a href="{{ URL::to('/product')."/edit/".$pro->pro_id }}" class="btn btn-primary btn-ms">Edit</a> &nbsp;
 														   <a href="{{ URL::to('/product')."/delete/".$pro->pro_id }}" class="btn btn-danger btn-ms">Delete</a>
 													   </td>
+													   <td><div class="addthis_sharing_toolbox"></div></td>
 												   </tr>
 											   @endforeach
-											 
-											  
-											 
+
+									</div>
+
 										</tbody>
-										
+
 									 </table>
+
 									  {!! $product->appends(['key' => Request::get('key')])->render() !!}
-									   
-									
+
+
 		      					<div class="text-center">
-									
+
 								</div>
-								
-								</div>  
+
+								</div>
 							</div>
 						</div>
 					</div>
-						
+
 				</div>
-				
-				
-				
-				
-			</div>	
-				
+
+
+
+
+			</div>
+
 	</div>
 	
 @stop

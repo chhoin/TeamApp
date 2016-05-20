@@ -5,6 +5,7 @@
 	<meta charset="utf-8">
   	<meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="{{ asset('asset/css/style.css') }}">
+	<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-573b41f81bcfa2e7"></script>
     <link rel="stylesheet" href="{{ asset('asset/css/bootstrap.min.css') }}">
     @yield('head')
 </head>

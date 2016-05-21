@@ -23,7 +23,7 @@
                         <div class="panel-heading">Adding Article</div>
                         <div class="panel-body">
                             <div class="box-body">
-                                <form method="post" action="{{ URL::to('article')."/store"}}" accept-charset="UTF-8">
+                                <form method="post" action="{{ URL::to('article')."/store"}}" accept-charset="UTF-8" enctype="multipart/form-data">
                                     <div class="form-horizontal">
                                         <!--Input article name-->
                                         <div class="form-group {{ $errors->has('name')? 'has-error' : '' }} ">
@@ -48,7 +48,7 @@
                                             <label class="col-sm-2 control-label">Article image</label>
                                             <div class="col-sm-10">
                                                 <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                                                <input type='text' class="form-control" name='image' id='image' value="{{ old('image') }}">
+                                                <input type='file' class="form-control" name='image' id='image' value="{{ old('image') }}">
                                                 {!! $errors->first('image','<span class="text-danger">:message</span> ') !!}
                                             </div>
                                         </div>
@@ -146,10 +146,6 @@
                     </div>
                 </div>
             </div>
-            
-        </div>       
-       
-       
+        </div>
     </div>
-
 @stop

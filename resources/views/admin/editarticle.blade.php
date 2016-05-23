@@ -23,7 +23,7 @@
                         <div class="panel-heading">{{ trans('lang.edit') }}</div>
                         <div class="panel-body">
                             <div class="box-body">
-                                <form method="post" action="{{ URL::to(trans('lang.lang').'/article')."/update"}}" accept-charset="UTF-8">
+                                <form method="post" action="{{ URL::to(trans('lang.lang').'/article')."/update"}}" accept-charset="UTF-8" enctype="multipart/form-data">
                                     <div class="form-horizontal">
                                         <!--Input article name-->
                                         <div class="form-group {{ $errors->has('name')? 'has-error' : '' }} ">

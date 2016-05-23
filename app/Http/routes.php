@@ -13,11 +13,11 @@
 
 /**
  * Default route
- */
+
 Route::get ( '/', function () {
 	return view ( 'welcome' );
 } );
-
+*/
 /**
  * category route
  * 
@@ -38,13 +38,13 @@ Route::group(['middleware' => ['web']], function () {
  * for muth
  */
 Route::group(['middleware' => ['web']], function () {
-	Route::get ( '/article', 'ArticleController@index' );
-	Route::get ( '/article/view/{id}', 'ArticleController@show' );
-	Route::get ( '/article/delete/{id}', 'ArticleController@destroy' );
-	Route::get ( '/article/edit/{id}', 'ArticleController@edit' );
-	Route::get ( '/article/search', 'ArticleController@search' );
-	Route::post ( '/article/store', 'ArticleController@store' );
-	Route::post ( '/article/update', 'ArticleController@update' );
+	Route::get ( '/{local}/article', 'ArticleController@index' );
+	Route::get ( '/{local}/article/view/{id}', 'ArticleController@show' );
+	Route::get ( '/{local}/article/delete/{id}', 'ArticleController@destroy' );
+	Route::get ( '/{local}/article/edit/{id}', 'ArticleController@edit' );
+	Route::get ( '/{local}/article/search', 'ArticleController@search' );
+	Route::post ( '/{local}/article/store', 'ArticleController@store' );
+	Route::post ( '/{local}/article/update', 'ArticleController@update' );
 });
 
 
@@ -69,3 +69,15 @@ Route::group(['middleware' => ['web']], function () {
 Route::group(['middleware' => ['web']], function () {
 	Route::get ( '/test', 'TestController@index' );
 });
+
+	// Route::group(['middleware' => ['web']], function () {
+	// 	Route::get ( '/{local}', function(){
+	// 		echo trans('lang.menu')."<br>";
+	// 		echo trans('lang.art_name');
+	// 	} );
+	// });
+
+
+
+
+
